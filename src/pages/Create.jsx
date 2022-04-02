@@ -1,7 +1,6 @@
 import { useState } from "react";
 import urlcat from "urlcat";
-
-const BACKEND = process.env.REACT_APP_BACKEND ?? "http://localhost:2000";
+import { BACKEND } from "../utils/utils";
 
 const url = urlcat(BACKEND, "/api/holidays");
 
@@ -23,7 +22,7 @@ function Create() {
           if (data.error) {
               setError(data.error)
           }
-      });
+      }).catch(error => console.log(error) );
   };
 
   const handleSubmit = (event) => {
@@ -39,7 +38,6 @@ function Create() {
         <input
           type="text"
           name="name"
-          required
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
@@ -60,6 +58,7 @@ function Create() {
 }
 
 export default Create;
+
 
 
 
