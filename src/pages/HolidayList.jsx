@@ -20,14 +20,11 @@ function HolidayList() {
 
   return (
     <>
-        <pre>
-            {JSON.stringify(holidays, null, 2)}
-        </pre>
       <ul>
         {holidays.map((holiday) => (
           <li key={holiday._id}>
-            <a href="/">{holiday.name}</a>
-            {" -- "}
+            {holiday.name} -- <span>{holiday.likes}</span>
+            --
             <span onClick={handleDelete(holiday._id)}>Delete</span>
           </li>
         ))}
